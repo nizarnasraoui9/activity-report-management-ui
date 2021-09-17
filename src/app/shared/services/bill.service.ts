@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {PATH} from './paths';
 import { Observable } from 'rxjs';
 import { element } from 'protractor';
+import { NumberInput } from '@angular/cdk/coercion';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,12 @@ import { element } from 'protractor';
 export class BillService {
 
   constructor(private http:HttpClient) { }
-  getCra(year:number,month:number):Observable<any>{
-    return this.http.get(PATH+"cras/{year}/{month}?year="+year+"&month="+month);
+  
+  getAllClients():Observable<any>{
+    return this.http.get(PATH+"clients");
+  }
+  getCra(year:number,month:NumberInput,clientName: string):Observable<any>{
+    return this.http.get(PATH+"cras/"+year+"/"+month+"/"+clientName);
   }
   createEmtyBill():Observable<any>{
     return this.http.post("http://127.0.0.1:8081/sale-api/bill/add/''/''",[]);
@@ -68,5 +73,6 @@ export class BillService {
   return this.http.post("http://127.0.0.1:8081/sale-api/bill/add/'a'/'a'",mycra);
   }
 
+  
 
 }

@@ -35,6 +35,11 @@ export class AuthService {
 }
 
   register(user): Observable<any> {
+    type roles = Array<{roleId: number, name: String}>
+    const role : roles = [
+      { roleId : 1 , name : "ROLE_USER"}
+    ] 
+   
     return this.http.post('http://localhost:8080/register', {
       "username": user.username,
       "password": user.password,
@@ -43,7 +48,8 @@ export class AuthService {
       "email": user.email,
       "enabled": true,
       "accountNonExpired": true,
-      "accountNonLocked": true
+      "accountNonLocked": true,
+      "roles" : role
       
     });
   }

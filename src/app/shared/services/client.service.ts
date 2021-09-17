@@ -17,13 +17,14 @@ export class ClientService {
   addClient(client: any): Observable<any>{
     return this.http.post<any>(PATH+"clients",client);
   }
-  getAllClients(): Observable<any>{
-    return this.http.get<any>(PATH+"clients/dynamic");
-  }
+  
   getClient(id:number):Observable<any>{
     return this.http.get<any>(PATH+"clients/"+id);
   }
   updateClient(client:any):Observable<any>{
     return this.http.put<any>(PATH+"clients/"+client.id,client);
+  }
+  getAllClients():Observable<any>{
+    return this.http.get(PATH+"clients");
   }
 }

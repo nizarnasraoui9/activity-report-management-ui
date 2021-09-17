@@ -32,6 +32,8 @@ import { AddarticleComponent } from './shared/components/sales/addarticle/addart
 import { ViewArticlesComponent } from './shared/components/sales/view-articles/view-articles.component';
 import { ViewbillComponent } from './shared/components/sales/viewbill/viewbill.component';
 import { AddbillComponent } from './shared/components/sales/addbill/addbill.component';
+import { ConsultantsComponent} from './shared/components/sales/consultants/consultants.component'
+import { ConsultantsService } from './shared/services/consultants.service';
 
 /*
 const routes: Routes = [
@@ -56,6 +58,7 @@ const routes: Routes = [
 
 const routes: Routes = [
   {path: 'main', component: SidebarComponent, children:[
+    {path:'consultants',component: ConsultantsComponent},
     {path: 'cra', component: CraMainComponent,
     children: [
       {path: '', component: CraComponent},
@@ -82,10 +85,16 @@ const routes: Routes = [
     {path: ':id', component: ViewContractedDetailsComponent},
 
   ],canActivate: [AuthGuard]},
-  {path: 'account', component: AccountComponent,canActivate: [AuthGuard],},
+
+  {path: 'account', component: AccountComponent,canActivate: [AuthGuard],
+    children: [
+      {path: '', component: AccountComponent},
+      {path: ':id', component: AccountComponent},
+    ]
+  },
+  
   {path: 'login', component: LoginComponent},
   ]},
-
 
   { path: 'home', component: HomeComponent, },
   {path: 'register', component: RegisterComponent},

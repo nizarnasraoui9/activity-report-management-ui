@@ -75,10 +75,10 @@ import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
-import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ActiveReportsModule } from '@grapecity/activereports-angular';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 
 
@@ -108,6 +108,9 @@ import { AddarticleComponent } from './shared/components/sales/addarticle/addart
 import { ViewArticlesComponent } from './shared/components/sales/view-articles/view-articles.component';
 import { AddbillComponent } from './shared/components/sales/addbill/addbill.component';
 import { ViewbillComponent } from './shared/components/sales/viewbill/viewbill.component';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { ConsultantsComponent } from './shared/components/sales/consultants/consultants.component';
+
 
 
 @NgModule({
@@ -155,6 +158,7 @@ import { ViewbillComponent } from './shared/components/sales/viewbill/viewbill.c
     ViewArticlesComponent,
     AddbillComponent,
     ViewbillComponent,
+    ConsultantsComponent,
   ],
     imports: [
       SignaturePadModule,
@@ -214,7 +218,9 @@ import { ViewbillComponent } from './shared/components/sales/viewbill/viewbill.c
         AppRoutingModule,
         RouterModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        NzInputModule,
+        NzAvatarModule
 
 
     ],

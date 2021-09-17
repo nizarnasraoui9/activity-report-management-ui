@@ -56,8 +56,10 @@ export class ViewCraDetailsComponent implements OnInit {
     
     this.fullDaysSum = 0 ;
     this.halfDaysSum = 0 ;
+    
     this.route.params.subscribe(params => {
-      this.id=params.id;
+    this.id=params.id;
+    console.log(params)
 
     });
     this.craService.getCra(this.id).subscribe((response)=>{

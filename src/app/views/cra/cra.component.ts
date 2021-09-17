@@ -16,6 +16,7 @@ export class CraComponent implements OnInit {
   constructor(private craService:CraService,private router:Router) { }
   ngOnInit(): void {
     this.loadComponent=false;
+
     this.craService.getAllCras().subscribe((response)=>{
       console.log(response);
       this.cras=response;

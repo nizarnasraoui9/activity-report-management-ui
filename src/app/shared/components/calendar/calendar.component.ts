@@ -12,6 +12,8 @@ import { CustomDateAdapter } from './dateAdapter';
   encapsulation:ViewEncapsulation.None,
   providers:[ CustomDateAdapter]
   
+  
+  
 })
 export class CalendarComponent implements OnInit {
   calendar:any;

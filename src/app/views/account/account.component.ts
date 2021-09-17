@@ -6,6 +6,8 @@ import { SignatureComponent } from '../../shared/components/signature/signature.
 import { HttpClient } from '@angular/common/http';
 import { Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Route } from '@angular/compiler/src/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -31,27 +33,31 @@ export class AccountComponent implements OnInit {
   isImageSaved: boolean;
   cardImageBase64: string;
   avatar : String
-  constructor(private accountService:AccountService,private dialog : MatDialog , private http : HttpClient) { }
+  param :String
+  userSession : String
+  constructor(private accountService:AccountService,private route : ActivatedRoute , private router : Router , private dialog : MatDialog , private http : HttpClient) { }
 
   ngOnInit(): void {
-
-    this.accountService.getPersonalInformations(1).subscribe((res)=>{
-      this.account = res 
-      console.log(this.account)
-      this.form.setValue({
-      firstname : res.firstName,
-      lastname :res.lastName,
-      email :res.email
+    this.userSession = sessionStorage.getItem('username')
+    this.route.queryParams.subscribe(params => {
+      this.param = params['username']
+      });
+      this.accountService.getPersonnalInformationsByUserName(this.param).subscribe((res)=>{
+        this.account = res 
+        console.log(this.account)
+        this.form.setValue({
+        firstname : res.firstName,
+        lastname :res.lastName,
+        email :res.email
+        })
+        this.avatar = res.avatar
+        console.log(this.form.value)
       })
-      this.avatar = res.avatar
-      console.log(this.form.value)
-    })
-    this.accountService.getSignature().subscribe((res)=>{
-      this.signatureImg = res[0].signature
-      this.signatureId = res[0].id
-      console.log(res);
-    })
-
+      this.accountService.getSignature().subscribe((res)=>{
+        this.signatureImg = res[0].signature
+        this.signatureId = res[0].id
+        console.log(res);
+      })
   }
   onSubmit(){
     console.log(this.account.email);
@@ -70,6 +76,8 @@ export class AccountComponent implements OnInit {
       }).subscribe((res)=>{
         console.log(res)
     })
+    this.accountService.getRole("admin").subscribe(data => console.log(data))
+
   }
 
   openModal(){
@@ -146,6 +154,8 @@ export class AccountComponent implements OnInit {
         reader.readAsDataURL(fileInput.target.files[0]);
     }
 }
+
+
   }
 
 

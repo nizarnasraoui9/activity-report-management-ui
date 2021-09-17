@@ -17,6 +17,13 @@ export class AccountService {
     return this.http.get(PATH+'accounts/');
 
   }
+
+  getPersonnalInformationsByUserName(username : String): Observable<any>{
+    return this.http.get(PATH+'accounts?username='+username);
+
+  }
+
+
   updatePersonalInformations(id:number,form:any): Observable<any>{
     const user={
       "accountId" : id ,
@@ -25,10 +32,11 @@ export class AccountService {
       "lastName": form.lastName,
       "email": form.email,
       "password" : form.password,
-      "enabled": true,
+      "enabled": form.enabled,
       "accountNonExpired": true,
       "accountNonLocked": true,
-      "avatar" : form.avatar 
+      "avatar" : form.avatar ,
+      "roles" : form.roles
     };
     return this.http.put(PATH+'accounts/'+id,user);
   }
@@ -38,14 +46,19 @@ export class AccountService {
     return this.http.post<any>(PATH+"signatures",signature);
     }
   
-
-  getSignature():Observable<any>{
+  getSignature():Observable<any> {
     return this.http.get<any>(PATH+"signatures/");
   }
 
+  getSignatureByUserName(username : String):Observable<any> {
+    return this.http.get<any>(PATH+"signatures/"+username);
+  }
   updateSignature(signature : any):Observable<any>{
     return this.http.put<any>(PATH+"signatures/"+signature.id,signature);
   }
 
-  update
+  getRole(username : String):Observable<any>{
+    return this.http.get(PATH+'accounts/role/'+username);
+
+  }
 }

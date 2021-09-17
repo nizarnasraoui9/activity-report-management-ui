@@ -30,6 +30,10 @@ export class ArticleService {
     return this.http.get("http://localhost:8081/sale-api/article/all");
   }
 
+  getArticleByClientName(clientName:string):Observable<any>{
+    return this.http.get("http://localhost:8081/sale-api/article/client/"+clientName);
+  }
+  
 
 
   

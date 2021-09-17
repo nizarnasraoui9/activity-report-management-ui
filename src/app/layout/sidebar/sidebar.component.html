@@ -22,11 +22,16 @@
             <a routerLink="./client"><span class="fa fa-id-card-o mr-3"></span> Mes clients</a>
           </li> 
           <li>
-            <a routerLink="./account"><span class="fa fa-user mr-3"></span> Mon compte</a>
+            <a routerLink="./account" [queryParams]="{username: username}" ><span class="fa fa-user mr-3"></span> Mon compte</a>
           </li>
           <li>
             <a routerLink="./sales"><span class="fa fa-user mr-3"></span> Ventes</a>
           </li>
+          <li>
+
+            <a *ngIf="this.admin === true" routerLink="./consultants"><span class="fa fa-user mr-3"></span> Consultants</a>
+          </li>
+
           <li>
             <a (click)="this.openModal()"><span class="fa fa-sign-out mr-3"></span>  Déconnexion</a>
           </li>
