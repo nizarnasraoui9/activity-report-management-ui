@@ -1,0 +1,19 @@
+button{
+    margin-left: 10px;
+}
+h2{
+    display: block;
+    font-size: 1.5em;
+    color: rgba(0,0,0,.85);
+    font-weight: 500;
+    width: 100%;
+    margin: 0 auto;
+    font-family: "Titillium ";
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#sign-out{
+    background-color: rgb(56, 206, 168);
+    margin-left: 20px;
+}

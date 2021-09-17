@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="craCreation">
+<h6>Création de Cra </h6><hr>
+<p>Sélectionne la période pour laquelle émettre le CRA</p>
+<div class="selectDate" *ngIf="selectDate">
+    <h6>Choisir l'année:</h6>
+    <mat-form-field >
+        <mat-select [(value)]="selectedYear">
+          <mat-option  value="{{this.year}}">{{this.year}}</mat-option>
+          <mat-option value="{{this.year-1}}">{{this.year-1}}</mat-option>
+          <mat-option value="{{this.year-1}}">{{this.year-2}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <h6>Choisir le mois</h6>
+    <mat-form-field >
+        <mat-select [(value)]="selectedMonth">
+          <mat-option  value="1">Janvier</mat-option>
+          <mat-option  value="2">Fevrier</mat-option>
+          <mat-option  value="3">Mars</mat-option>
+          <mat-option  value="4">Avril</mat-option>
+          <mat-option  value="5">Mai</mat-option>
+          <mat-option  value="6">Juin</mat-option>
+          <mat-option  value="7">Juillet</mat-option>
+          <mat-option  value="8">Out</mat-option>
+          <mat-option  value="9">Septembre</mat-option>
+          <mat-option  value="10">Octobre</mat-option>
+          <mat-option  value="11">Novembre</mat-option>
+          <mat-option  value="12">Decembre</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <button mat-raised-button  (click)="openSelectContracted()">Choisir un prestataire</button>
+    <hr>
+    <button mat-raised-button id="close" color="warn" mat-dialog-close>Annuler</button>
+  </div>
+<div *ngIf="contractedSelected">
+  <h6>Selectionner Un Prestataire:</h6>
+  <div *ngFor="let i of this.contractedList">
+      <mat-radio-group  aria-label="Select an option">
+          <mat-radio-button  (click)="this.selectContracted(i)" value="1">{{i.name}}</mat-radio-button><br>
+      </mat-radio-group>
+  </div>
+</div>
+
+<div  *ngIf="ClientSelected">
+  <h3>Selectionner Un Client:</h3>
+  <div *ngFor="let i of this.clientList">
+      <mat-radio-group  aria-label="Select an option">
+          <mat-radio-button  (click)="this.selectClient(i)" value="1">{{i.name}}</mat-radio-button><br>
+      </mat-radio-group>
+  </div>
+</div>
+
+<div *ngIf="createCra">
+  <p>Prestatire: <span>{{this.contracted.name}}</span></p><br>
+  <p>Client: <span>{{this.client.name}}</span><br>
+  <p>Mois: <span>{{this.selectedMonth}}</span></p><br>
+  <p>Mois: <span>{{this.selectedYear}}</span></p><br>
+  <button mat-raised-button color="primary" type="submit" (click)=onSubmit()>Créer un Cra</button>
+</div>
+</div>
+</div>

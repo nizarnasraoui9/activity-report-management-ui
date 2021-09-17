@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+button{
+  width : 20%;
+  margin-left: 10px;
+  margin-top: 40px;
+  background-color: #50d8af;
+  margin-bottom: 20px;
+  float: left;
+
+}

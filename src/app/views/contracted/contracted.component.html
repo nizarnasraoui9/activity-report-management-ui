@@ -1,0 +1,14 @@
+<h2>Mes Prestataires</h2>
+  <div class="contracted">
+    <div class="row">
+      <div class="col-md-4">
+        <app-add-contracted-card ></app-add-contracted-card>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let contracted of this.contractedList">
+              <app-contracted-card [contracted]="this.contracted" (click)="showContractedDetails(this.contracted)" ></app-contracted-card>
+          </div>
+        </div>
+  </div>
+

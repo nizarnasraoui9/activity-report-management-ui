@@ -1,0 +1,47 @@
+
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	        </button>
+        </div>
+	  		<div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+	  			<div class="user-logo">
+            <img class="logo"
+                    src="../../../assets/images/emainfo.png" alt="..."  style="height: 50px;;"/>
+          </div>
+	  		</div>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a routerLink="./cra"><span class="fa fa-list mr-3"></span> Mes CRAs</a>
+          </li>
+          <li>
+              <a routerLink="./contracted"><span class="fa fa-list-alt mr-3 "></span> Mes prestataires</a>
+          </li>
+          <li>
+            <a routerLink="./client"><span class="fa fa-id-card-o mr-3"></span> Mes clients</a>
+          </li> 
+          <li>
+            <a routerLink="./account"><span class="fa fa-user mr-3"></span> Mon compte</a>
+          </li>
+          <li>
+            <a routerLink="./sales"><span class="fa fa-user mr-3"></span> Ventes</a>
+          </li>
+          <li>
+            <a (click)="this.openModal()"><span class="fa fa-sign-out mr-3"></span>  Déconnexion</a>
+          </li>
+
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+        
+      <div id="content" >
+        <div class="addCra" style="background-color: #f6f6ff;">
+        <router-outlet></router-outlet>
+      </div>
+		</div>
+</div>
+
+

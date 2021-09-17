@@ -1,0 +1,89 @@
+<div tabindex="-1" style="outline: none;">
+    <div class="ant-card sc-fzXfNM cjwZtM ant-card-bordered ant-card-hoverable ant-card-small">
+        <div class="ant-card-head">
+        <div class="ant-card-head-wrapper">
+            <div class="ant-card-head-title">Informations</div>
+
+        </div>
+    </div>
+    <div class="ant-card-body">
+        <form [formGroup]="form"  class="form" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                        NOM : <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <input matInput value="{{this.client.name}}" disabled >
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                        SIRET : <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <mat-label>{{this.client.siret}}</mat-label>
+                        <input matInput class="holder" disabled placeholder="">
+                      </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                       N° Voie : <br>
+                      <mat-form-field appearance="outline" class="form" style="height: 35px;">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="streetNumber" class="holder" placeholder="">
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                      repetition : <br>
+                      <mat-form-field  appearance="outline" id="inpt" class="form">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="repetition" class="holder" placeholder="">
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                     type de voie : <br>
+                  <mat-form-field appearance="outline" class="form">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="streetType" class="holder" placeholder="">
+                  </mat-form-field>
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                       Rue : <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="streetName" class="holder" placeholder="">
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                       Code postal : <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="postalCode" class="holder" placeholder="">
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                     Ville : <br>
+                  <mat-form-field appearance="outline" class="form">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="city" class="holder" placeholder="">
+                  </mat-form-field>
+            </div>
+            </div>
+
+            <div class="row">
+                    <button id = "updateContracted" mat-raised-button (click)=onSubmit() >Enregistrer</button>
+            </div>
+        </div>
+        </form>
+    </div>
+
+
+    </div>
+</div>
+
+  
+  
+   
+  

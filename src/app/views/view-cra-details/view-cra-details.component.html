@@ -1,0 +1,90 @@
+<body style="background-color:#f6f6ff ;">
+<div class="container-fluid">
+  <div tabindex="-1" style="outline: none;" class="body">
+    <h1>Compte rendu d'activité</h1>
+    <h2>{{this.viewDate}}</h2>
+    <div class="calender">
+      <app-calendar>*ngIf="this.cra" [selectedCra]="this.cra"></app-calendar>
+    </div>
+      <div class="row">       
+                      <div class="col">
+                          <app-contracted-card class="contracted" *ngIf="this.cra" [contracted]="this.cra.contracted"></app-contracted-card>
+                      </div>    
+                      <div class="col">
+                        <app-client-card class="client"  *ngIf="this.cra" [client]="this.cra.client"></app-client-card>
+                      </div> 
+      </div>
+    <div class="row">
+      <div class="col">  
+                      <div class="ant-card sc-fzXfNM cjwZtM ant-card-bordered ant-card-hoverable ant-card-small">
+                        <div class="ant-card-head">
+                          <div class="ant-card-head-wrapper">
+                              <div class="ant-card-head-title">Note</div>
+                          </div>
+                        </div>
+                        <div class="ant-card-body">
+                          <textarea nz-input placeholder="Ajouter une note " nzAutosize [(ngModel)]="note" ></textarea>
+                          <button mat-raised-button  (click)="addNote()">Ajouter une note</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+       
+                <section class="sc-fzXfNd cniYLL">
+                  <div class="daysWorked">
+                                    <div class="ant-card sc-fzXfNM cjwZtM ant-card-bordered ant-card-hoverable ant-card-small">
+                                      <div class="ant-card-head">
+                                        <div class="ant-card-head-wrapper">
+                                            <div class="ant-card-head-title">Durée de travail</div>
+                                        </div>
+                                      </div>
+                                      <div class="ant-card-body">
+                                        <div class="container">
+                                        <div class="row">
+                                          <div class="col-6">
+                                        <p class="sc-fzXfNK cjgglu">{{this.craService.currentSumWorkedDays.value}}</p>
+                                        <p class="sc-fzXfNL cjoCPD">jours</p>
+                                      </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-6">
+                                        <p class="sc-fzXfNK cjgglu">{{this.craService.currentFullDayssSum.value}}</p>
+                                        <p class="sc-fzXfNL cjoCPD">journées</p>
+                                      </div>
+                                        <div class="col-6">
+                                          <p class="sc-fzXfNK cjgglu">{{this.craService.currentHalfDaysSum.value}}</p>
+                                          <p class="sc-fzXfNL cjoCPD">demi-jour</p>
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </section>
+
+              <section class="sc-fzXfNd cniYLL">
+               <button mat-raised-button color="succes" [disabled]="this.craService.isValid == false"  (click)="gerenatePdf()" style="margin: 10px 10px 10px 0px;">
+                 <span>Générer le PDF</span>
+               </button>
+               <button mat-raised-button color="warn" (click)="deleteCra()" ><span>Supprimer</span>
+               </button>
+            </section>
+              </div>  
+              
+
+            </body>
+
+
+
+
+
+
+
+
+
+
+
+

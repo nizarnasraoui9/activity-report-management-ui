@@ -1,0 +1,98 @@
+<div tabindex="-1" style="outline: none;">
+    <div class="ant-card sc-fzXfNM cjwZtM ant-card-bordered ant-card-hoverable ant-card-small">
+        <div class="ant-card-head">
+        <div class="ant-card-head-wrapper">
+            <div class="ant-card-head-title">Ventes</div>
+
+        </div>
+    </div>
+    <div class="ant-card-body">
+        <form [formGroup]="form"  class="form" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                       <br> Dénomination : <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <input matInput formControlName="denomination"  >
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                       <br> Type : <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <input matInput class="holder" formControlName="type"  disabled placeholder="">
+                      </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <br>   Unité : <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="unit" class="holder" placeholder="">
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <br>  Prix Unitaire HT: <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="unitPrice" class="holder" placeholder="">
+                      </mat-form-field>
+                </div>
+                <!--<div class="col">
+                    <br> TVA : <br>
+                  <mat-form-field appearance="outline" class="form">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="tva" class="holder" placeholder="">
+                    
+                  </mat-form-field>
+            </div>-->
+
+
+            <div class="col">
+              <br> TVA : <br>
+            <mat-form-field appearance="outline" class="form">
+              <mat-label></mat-label>
+              <mat-select formControlName="tva">
+                <mat-option formControlName="tva" *ngFor="let x of this.tva" [value]="x.value">
+                  {{x.value}}%
+                </mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+
+            
+      </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <br>   Référence : <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="reference" class="holder" placeholder="">
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <br>   Commentaire : <br>
+                      <mat-form-field appearance="outline" class="form">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="comment" class="holder" placeholder="">
+                      </mat-form-field>
+                </div>
+                
+            </div>
+
+            <div class="row">
+                    <button id = "updateContracted" mat-raised-button (click)=onSubmit() >Enregistrer</button>
+            </div>
+            <br>
+        </div>
+        </form>
+    </div>
+
+
+    </div>
+</div>
+

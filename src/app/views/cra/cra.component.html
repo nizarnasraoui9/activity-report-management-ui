@@ -1,0 +1,10 @@
+    <div class="row" *ngIf="this.cras">
+      <div class="col-auto ">
+        <app-add-cra-button></app-add-cra-button>
+      </div>
+            <div class="col-auto" *ngFor="let cra of this.cras">
+              <app-cra-card [cra]="cra" (click)="showCraDetails(cra)"></app-cra-card>
+          </div>
+      </div>
+      
+      <mat-spinner *ngIf="!this.cras"></mat-spinner>

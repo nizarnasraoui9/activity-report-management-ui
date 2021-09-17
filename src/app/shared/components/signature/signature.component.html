@@ -1,0 +1,10 @@
+<div class="signature-container">
+    <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+  </div>
+  
+  <div class="buttons">
+    <button mat-raised-button color = "warn" (click)="clearSignature()">Clear signature pad</button>
+    <button id = "add" mat-raised-button *ngIf="!this.signature" (click)="savePad()">add signature</button>
+    <button id = "update" mat-raised-button *ngIf="this.signature" (click)="updatePad()">update signature</button>
+  </div>
+

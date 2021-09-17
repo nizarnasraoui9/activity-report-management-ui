@@ -1,0 +1,36 @@
+<h6>Ajouter un client</h6><hr>
+<form [formGroup]="form"  class="form" >
+    <mat-form-field class="form">
+        <label>Nom:</label>
+      <input formControlName="name"  matInput  >
+    </mat-form-field>
+    <br>
+    
+    <mat-radio-group aria-label="Select an option">
+        <mat-radio-button checked="checked"  (click)="this.selectFrensh()" value="1">Client Français</mat-radio-button>
+        <mat-radio-button  (click)="this.selectForeign()" class="other" value="2">Client étranger</mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field *ngIf="frensh" class="form" >
+        <label>Siret:</label>
+        <input formControlName="siret" matInput>
+    </mat-form-field>
+    <mat-form-field  *ngIf="!frensh" class="form" >
+        <label>Identifiant unique :</label>
+        <input formControlName="uniqueIdentifier" matInput  >
+    </mat-form-field>
+    <br>
+    <mat-form-field *ngIf="!frensh" class="form" >
+        <label>Pays :</label>
+        <input formControlName="country" matInput >
+    </mat-form-field>
+    <div class="container">
+        <div class="row">
+          <div class="col align-self-start">
+          <button mat-raised-button  type="submit" (click)=onSubmit()>Ajouter</button>
+          </div>
+          <div class="col align-self-end">
+            <button mat-raised-button id="close" color="warn" mat-dialog-close>Annuler</button>
+          </div>
+        </div>
+      </div>
+</form> 

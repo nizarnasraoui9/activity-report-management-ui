@@ -1,0 +1,104 @@
+
+ <body class="mat-typography">
+<div class="row justify-content-md-center">
+      <mat-card>
+        <div class="container">
+          <article class="card-body mx-auto" style="max-width: 400px;">
+            <h1 class="card-title mt-3 text-center" style="color:rgb(104, 140, 248)">Se connecter</h1><br>
+        
+            <form
+            *ngIf="!isLoggedIn"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate
+              >
+            <div class="form-group input-group">
+                  
+                </div> <!-- form-group// -->
+        
+        
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                   </div>
+                
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="username"
+                      [(ngModel)]="form.username"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel"
+                      placeholder="Nom d'utilisateur" 
+                      
+                    />
+                    
+            
+                    
+                  </div> <!-- form-group// -->
+        
+        
+                  <div 
+                  *ngIf="f.submitted && username.invalid">
+                   <div *ngIf="username.errors.required">
+                     <p style="color:red">Taper votre nom d'utilisateur</p>
+                   </div>
+                   <div *ngIf="username.errors.minlength">
+                     <p style="color:red">Le nom d'utilisateur doit avoir au moins 3 caractères</p>
+                   </div>
+                   <div *ngIf="username.errors.maxlength">
+                     <p style="color:red">Le nom d'utilisateur ne doit pas dépasser 20 caractères</p>
+                   </div>
+                 </div>
+        
+        
+             
+             
+        
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+              </div>
+              <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  [(ngModel)]="form.password"
+                  required
+                  minlength="6"
+                  #password="ngModel"
+                  placeholder="Mot de passe"
+                />
+                
+              </div> 
+              <div *ngIf="f.submitted && password.invalid">
+                <div *ngIf="password.errors.required">
+                  <p style="color:red">Taper le mot de passe!</p>
+                </div>
+                <div *ngIf="password.errors.minlength">
+                  <p style="color:red">Le mot de passe doit contenir au moins 6 caractères</p>
+                </div>
+              </div>
+        
+              <div class="form-group">
+                <button class="btn btn-primary btn-block">Se connecter</button>
+              </div>     
+              <p class="text-center" >Vous n'avez pas de compte? <a routerLink="/register" style="color:blue">Créer un compte</a> </p>                                                                 
+          </form>
+          </article>
+          
+          </div> 
+        
+      </mat-card>
+      
+    </div>
+  </body>
+  
+  
+
+
+
+

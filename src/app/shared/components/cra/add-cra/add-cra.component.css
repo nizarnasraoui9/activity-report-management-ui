@@ -1,0 +1,63 @@
+mat-radio-button{
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+span{
+    font-weight: bold;
+    color:rgb(82, 82, 189);
+}
+
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color: blue !important;
+  }
+  
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: blue!important;   /*inner circle color change*/
+  }
+  
+  ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color:blue!important; /*outer ring color change*/
+  }
+
+  app-view-search{
+    size: 10%;
+  }
+  
+.craCreation{
+  position: relative;
+  background-color:transparent;
+  border: 0;
+  pointer-events: auto;
+  max-width: 40vw ;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0%;
+}
+
+p{
+  padding: 8px 15px;
+  margin-bottom: 16px;
+  background-color: #e6f7ff;
+  border: 1px solid #91d5ff;
+  box-sizing: border-box;
+  color: rgba(0,0,0,.65);
+  font-size: 14px;
+  font-variant: tabular-nums;
+}
+
+mat-form-field{
+  background: transparent;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+button{
+  background-color: #50d8af;
+}
+#close{
+  margin-left: 80%;
+}
+
+
+

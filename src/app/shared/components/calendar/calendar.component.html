@@ -1,0 +1,28 @@
+<div class="calendar" *ngIf="this.updatedCalendar" >
+    <mat-calendar #calendar
+    (selectedChange)="select($event,calendar)"
+    onload="updateCalendar(calendar)"
+     [dateClass]="isSelected"
+     date-disabled="disabled(date, mode)"
+     >
+    
+</mat-calendar>
+
+        <div class="row">
+          <div class="col">
+          <button mat-raised-button id="validate" (click)="updateCraCalender()">
+            <span>Enregistrer</span>
+          </button>
+          </div>
+          <div class="col">
+            <button id="clear" mat-raised-button color="warn"   (click)="clearCalendar()">Vider le Cra</button>
+          </div>
+          <div class="col">
+            <button id="add" mat-raised-button   (click)="fillUpCra()">Remplir le Cra</button>  
+          </div>
+        </div>
+
+
+      </div>
+
+      

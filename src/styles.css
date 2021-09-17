@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "@grapecity/activereports/styles/ar-js-ui.css";
+@import "@grapecity/activereports/styles/ar-js-viewer.css";
+
+
+.why {
+
+    background: #ffff;
+    font-family: Poppins;
+}
+
+.mat-typography{
+    background-size: 100% 100% ;
+
+}
+
+.why .titlepage {
+    text-align: center;
+}
+
+
+
+.why .titlepage p {
+    color: #090808;
+}
+
+.why .why-box h3 {
+    font-size: 20px;
+    line-height: 25px;
+    color: #090808;
+    display: block;
+    font-weight: 500;
+}
+
+.why .why-box {
+    text-align: left;
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 20px 20px 20px 20px;
+    transition: ease-in all 0.5s;
+    margin-bottom: 0px;
+    box-shadow: #ddd 0px 0px 15px
+}
+
+.why .why-box p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #090808;
+}
+
+
+
+.why{
+   
+        max-width: 300px;
+        margin-bottom: 15px;
+        
+   
+}
+.body{
+    background-color: #f6f6ff;
+    height: 100%;
+    max-width: 100%;
+}

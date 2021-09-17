@@ -1,0 +1,16 @@
+
+  <div class="ant-card sc-fzXfNM cjwZtM ant-card-bordered ant-card-hoverable ant-card-small" >
+    <div class="ant-card-head">
+    <div class="ant-card-head-wrapper">
+        <div class="ant-card-head-title">{{this.name}}</div>
+        <i nz-icon nzType="delete" *ngIf="this.router.url === '/main/contracted'" (click)="deleteContracted()" nzTheme="outline"></i>
+    </div>
+</div>
+<div class="ant-card-body">
+    <p class="sc-fzXfNK cjgglu">SIRET :</p>
+    <p class="sc-fzXfNL cjoCPD">{{this.siret}}</p>
+    <button *ngIf="this.router.url !== '/main/contracted' && !this.signature" mat-raised-button  (click)="openModal()">Ajouter une signature</button>
+    <mat-checkbox *ngIf ="this.signature" example-margin (change)="ifCheked($event)" >Importer la signature dans le Pdf</mat-checkbox>
+
+</div>
+</div>

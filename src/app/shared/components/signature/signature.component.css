@@ -1,0 +1,10 @@
+.buttons{
+    float: right;
+    margin: 10px;
+}
+#update , #add{
+    background-color: #50d8af ;
+}
+.mat-raised-button:not([class*=mat-elevation-z]) {
+    margin-right: 15px;
+}

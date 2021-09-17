@@ -1,0 +1,269 @@
+<input type="button" (click)="this.saveBill()" value="view date">
+
+
+  
+    
+    
+
+
+
+    
+
+
+
+
+
+<div class="row">
+  <div class="col">
+    <mat-card class="viewFacture">
+
+
+
+
+
+
+
+
+
+
+
+      <table class="styled-table">
+        <thead>
+            <tr>
+              <th>Date d'émission</th>
+                <th>Numéro</th>
+                <th>Condition de réglement</th>
+                <th>Date d'échéance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>{{this.form.value.emissionDate}}</td>
+                <td>{{this.id}}</td>
+                <td>{{this.form.value.regulationCondition}}</td>
+                <td>{{this.form.value.dueDate}}</td>
+            </tr>
+            
+        </tbody>
+      </table>
+
+
+
+
+      <table class="styled-table">
+        <thead>
+            <tr>
+              <th>Article</th>
+                <th>Prix Unitaire</th>
+                <th>Tva</th>
+                <th>Montant</th>
+                <th>Num du Cra Correspondant</th>
+                <th>Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let article of this.billArticles">
+              <td>{{article.denomination}}</td>
+                <td>{{article.unitPrice}}</td>
+                <td>{{article.tva}}%</td>
+                <td>{{article.unitPrice+article.unitPrice/100*article.tva}}</td>
+                <td>{{article.cra.id}}</td>
+                <td>{{article.cra.daysSum}}</td>
+
+            </tr>
+            
+        </tbody>
+      </table>
+
+
+
+      <table class="styled-table">
+        <thead>
+            <tr>
+              <th>Récapitulatif</th>
+            </tr>
+        </thead>
+        <tbody>
+              <tr><td>Total HT:{{this.pricesSum}}</td></tr>
+                <tr><td>TVA: {{this.tvaSum}}</td></tr>
+                <tr><td>Total TTC: {{this.billSum}}</td></tr>
+                <tr><td>Net A payer: {{this.billSum}}</td></tr>
+            
+            
+        </tbody>
+      </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </mat-card>
+  </div>
+  <div class="col">
+    
+
+    
+    <mat-card>
+      <p style="float:left" *ngIf="this.id">Facture {{this.id}}</p><br>
+
+        <form [formGroup]="form">
+          <mat-form-field appearance="fill">
+            <mat-label>Date d'émission</mat-label>
+            <input matInput name="emissionDate" formControlName="emissionDate"   [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          
+          
+          <mat-form-field appearance="fill">
+            <mat-label>Date d'échéance</mat-label>
+            <input matInput formControlName="dueDate"    [matDatepicker]="b">
+            <mat-datepicker-toggle matSuffix [for]="b"></mat-datepicker-toggle>
+            <mat-datepicker #b></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field appearance="fill" class="form">
+            <mat-label>Condition de réglement</mat-label>
+            <mat-select formControlName="regulationCondition">
+              <mat-option name="regulationCondition" *ngFor="let x of this.regulationConditionOptions" [value]="x.toString()">
+                {{x}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          </form>
+    
+    </mat-card>
+
+<br>
+    
+
+    <div>
+
+    </div>
+
+
+
+
+
+<br>
+    <mat-card>
+      CRA      
+<form [formGroup]="searchCraForm">
+  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Année</mat-label>
+  <mat-select formControlName="year">
+    <mat-option *ngFor="let x of this.years" [value]="x">
+      {{x}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Mois</mat-label>
+  <mat-select formControlName="month">
+    <mat-option  *ngFor="let y of this.months" [value]="y">
+      {{y}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<input value="chercher" type="button" (click)="searchCra()">
+</form>
+
+
+
+
+<table class="styled-table">
+  <thead>
+      <tr>
+        <th>Numéro</th>
+          <th>Client</th>
+          <th>Prestataire de services</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let cra of this.cras[0]">
+        <td>{{cra.id}}</td>
+          <td>{{cra.client.name}}</td>
+          <td>{{cra.contracted.name}}</td>
+          <td style="color:red;font-size: large;font-weight: bold;" (click)="addCraToBill(cra)">Ajouter</td>
+      </tr>
+      
+  </tbody>
+</table>
+
+</mat-card>
+<br>
+
+
+
+<mat-card *ngIf="this.cra" style="border-top: 5px;border-bottom: 15px;" >
+  <p style="text-align: left;font-weight: bold;">Liste Des Cras:</p>
+  <mat-card  style="border-top: 15px; border-bottom: 15px;">
+    <p style="float:left;font-weight: bold;">Cra num: {{this.cra.id}}</p><br>
+
+      <form>
+        <div class="formGroup">
+          
+          <mat-form-field  appearance="standard">
+            <mat-label>chercher des articles:</mat-label>
+            <input 
+            id="article"
+                  type="text"
+                   placeholder=""
+                   aria-label="Number"
+                   matInput
+                   [formControl]="myControl"
+                   [matAutocomplete]="auto">
+                   <mat-icon matSuffix>search</mat-icon>
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="addArticleToCra(this.cra,option)">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        
+      </form>
+
+
+
+    <table class="styled-table">
+      <thead>
+          <tr>
+              <th>Denomination</th>
+              <th>TVA</th>
+              <th>Prix</th>
+              <th> </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr  *ngFor="let article of this.selectedArticles">
+              <td>{{article.denomination}}</td>
+              <td>{{article.tva}}%</td>
+              <td>{{article.unitPrice}}</td>
+              <td style="color:red;font-size: medium;font-weight: bold;" (click)="addArticleToBill(article)">Ajouter au Cra</td>
+          </tr>
+          
+      </tbody>
+  </table>
+
+
+
+  </mat-card>
+</mat-card>
+  </div>
+</div>
+
